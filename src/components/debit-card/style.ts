@@ -7,12 +7,19 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Card = styled.div`
+export const CardBody = styled.div`
   height: 250px;
   width: 500px;
   border-radius: 10px;
   background-color: darkgoldenrod;
   margin-left: calc(50% - 250px);
+  cursor: pointer;
+`;
+
+export const CardStripe = styled.div`
+  width: 100%;
+  height: 45px;
+  background-color: black;
 `;
 
 export const CardBank = styled.p`
@@ -33,11 +40,6 @@ export const CardNumber = styled.p`
   text-align: center;
 `;
 
-export const CardStripe = styled.div`
-  width: 100% !important;
-  height: 45px !important;
-  background-color: black !important;
-`;
 
 export const CardHolderName = styled.span`
   font-size: 15px;
