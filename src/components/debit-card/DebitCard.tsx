@@ -17,6 +17,7 @@ import { useState } from 'react';
 
 export const DebitCard = () => {
   const [cardIndex, setCardIndex] = useState<number | null>(null);
+  const [encrypted, setEncrypted] = useState<boolean>(true);
 
   const handleCardButtonClick = (index: number | null, decrypt = false) => {
     if (index === null) return;
@@ -37,6 +38,12 @@ export const DebitCard = () => {
       cvv.innerHTML = decrypt ? cards[index].cvv : 'XXX';
     }
     setCardIndex(index);
+    setEncrypted(!decrypt);
+  };
+
+  const handleCardClick = () => {
+    setEncrypted(!encrypted);
+    handleCardButtonClick(cardIndex, encrypted);
   };
 
   return (
@@ -45,10 +52,7 @@ export const DebitCard = () => {
         <div data-testid="debit-card">
           <Title>Card Details</Title>
           <br />
-          <CardBody
-            data-testid="debit-card-body"
-            onClick={() => handleCardButtonClick(cardIndex, true)}
-          >
+          <CardBody data-testid="debit-card-body" onClick={handleCardClick}>
             <CardBank
               data-testid="debit-card-bank-name"
               id="debit-card-bank-name"
