@@ -5,15 +5,16 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.8",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "^5.0.1",
+    "typescript": "^4.9.5"
   },
   "scripts": {
-    "start": "r3f-pack start",
-    "build": "r3f-pack build",
-    "test": "r3f-pack test",
-    "eject": "r3f-pack eject"
+    "pretest": "npm install",
+    "prestart": "npm install",
+    "start": "PORT=8000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "./node_modules/.bin/react-scripts test --watchAll=false --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +42,8 @@
     "@types/node": "^16.18.80",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
-    "r3f-pack": "^2.7.0"
+    "styled-components": "^6.1.8",
+    "web-vitals": "^2.1.4",
+    "jest-junit": "^16.0.0"
   }
 }
