@@ -1,5 +1,5 @@
 import App from './App';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import cards from './cards.json';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -17,47 +17,44 @@ const TEST_IDS = {
   LIST_CARD: 'list-card-',
 };
 
-let app, getByTestId: any, queryByTestId: any, getByText;
-
 afterEach(() => {
   cleanup();
 });
 
-beforeEach(() => {
-  ({ app, getByTestId, queryByTestId, getByText } = renderApp() as any);
-});
-
 it('Test initial rendering of the app', () => {
-  // expect(queryByTestId(TEST_IDS.DEBIT_CARD)).toBeNull();
-  let cardList = getByTestId(TEST_IDS.DEBIT_CARD_LIST);
-  expect(cardList.children.length).toBe(cards.length);
+  renderApp();
+  let cardList = screen.getByTestId(TEST_IDS.DEBIT_CARD_LIST);
+
+  expect(cardList.childNodes.length).toBe(cards.length);
 });
 
 it('Test masking of the data initially on the card', () => {
-  let card = getByTestId(TEST_IDS.LIST_CARD + '0');
+  renderApp();
+  let card = screen.getByTestId(TEST_IDS.LIST_CARD + '0');
   fireEvent.click(card);
-  let cardNo = getByTestId(TEST_IDS.DEBIT_CARD_NO);
+  let cardNo = screen.getByTestId(TEST_IDS.DEBIT_CARD_NO);
   expect(cardNo.textContent).toBe('4111 XXXX XXXX XXXX');
-  let cardName = getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
+  let cardName = screen.getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
   expect(cardName.textContent).toBe('XXXX XXXX');
-  let cardExpiry = getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
+  let cardExpiry = screen.getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
   expect(cardExpiry.textContent).toBe('XX/XX');
-  let cardCvv = getByTestId(TEST_IDS.DEBIT_CARD_CVV);
+  let cardCvv = screen.getByTestId(TEST_IDS.DEBIT_CARD_CVV);
   expect(cardCvv.textContent).toBe('XXX');
-  let cardBank = getByTestId(TEST_IDS.DEBIT_CARD_BANK_NAME);
+  let cardBank = screen.getByTestId(TEST_IDS.DEBIT_CARD_BANK_NAME);
   expect(cardBank.textContent).toBe('Bank of HackerLand');
 });
 
 it('Test Masking an Unmasking of the data on click', () => {
-  let card = getByTestId(TEST_IDS.LIST_CARD + '3');
+  renderApp();
+  let card = screen.getByTestId(TEST_IDS.LIST_CARD + '3');
   fireEvent.click(card);
-  let cardNo = getByTestId(TEST_IDS.DEBIT_CARD_NO);
+  let cardNo = screen.getByTestId(TEST_IDS.DEBIT_CARD_NO);
   expect(cardNo.textContent).toBe('3782 XXXX XXXX XXXX');
-  let cardName = getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
+  let cardName = screen.getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
   expect(cardName.textContent).toBe('XXXX XXXX');
-  let cardExpiry = getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
+  let cardExpiry = screen.getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
   expect(cardExpiry.textContent).toBe('XX/XX');
-  let cardCvv = getByTestId(TEST_IDS.DEBIT_CARD_CVV);
+  let cardCvv = screen.getByTestId(TEST_IDS.DEBIT_CARD_CVV);
   expect(cardCvv.textContent).toBe('XXX');
 
   fireEvent.click(cardNo);
@@ -68,15 +65,16 @@ it('Test Masking an Unmasking of the data on click', () => {
 });
 
 it('Test through masking and unmasking cycle of card', () => {
-  let card = getByTestId(TEST_IDS.LIST_CARD + '4');
+  renderApp();
+  let card = screen.getByTestId(TEST_IDS.LIST_CARD + '4');
   fireEvent.click(card);
-  let cardNo = getByTestId(TEST_IDS.DEBIT_CARD_NO);
+  let cardNo = screen.getByTestId(TEST_IDS.DEBIT_CARD_NO);
   expect(cardNo.textContent).toBe('6011 XXXX XXXX XXXX');
-  let cardName = getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
+  let cardName = screen.getByTestId(TEST_IDS.DEBIT_CARD_HOLDER_NAME);
   expect(cardName.textContent).toBe('XXXX XXXX');
-  let cardExpiry = getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
+  let cardExpiry = screen.getByTestId(TEST_IDS.DEBIT_CARD_EXPIRY_DATE);
   expect(cardExpiry.textContent).toBe('XX/XX');
-  let cardCvv = getByTestId(TEST_IDS.DEBIT_CARD_CVV);
+  let cardCvv = screen.getByTestId(TEST_IDS.DEBIT_CARD_CVV);
   expect(cardCvv.textContent).toBe('XXX');
 
   fireEvent.click(cardNo);
