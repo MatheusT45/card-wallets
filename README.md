@@ -1,45 +1,46 @@
-# Cards Wallet
+# Getting Started with Create React App
 
-Inspired by the HackerRank challenge
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Environment
+## Available Scripts
 
-- React Version: 16.13.1
-- Node Version: 14(LTS)
-- Default Port: 8000
+In the project directory, you can run:
 
-## Application Demo:
+### `npm start`
 
-![](<https://hrcdn.net/s3_pub/istreet-assets/cw0O7T2XI4-fi6_TEMrDmQ/ezgif.com-gif-maker%20(3).gif>)
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Functionality Requirements
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-The component must have the following functionalities:
+### `npm test`
 
-Initially, all the cards of the customer will be shown as a card component listed as Card1, Card2,...CardN. When the user clicks on a card, the detailed card should appear on the screen with details encrypted. When clicked on the detailed card, the details of the user's card should get decrypted and displayed, i.e Card Number, Expiry Date, CVV, Name on Card, etc. Also, to distinguish the cards, the first 4 digits of the card number and the bank name should be visible initially.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Project Specifications
+### `npm run build`
 
-**Read Only Files**
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- src/App.test.js
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-**Commands**
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- run:
+### `npm run eject`
 
-```bash
-npm start
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- install:
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```bash
-npm install
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- test:
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-```bash
-npm test
-```
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
