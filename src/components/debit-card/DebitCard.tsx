@@ -32,9 +32,7 @@ export const DebitCard = () => {
       cardNo.innerHTML = decrypt
         ? (cards[index].number.match(/.{1,4}/g) || []).join(' ')
         : `${cards[index].number.slice(0, 4)} XXXX XXXX XXXX`;
-      holderName.innerHTML = decrypt
-        ? cards[index].name
-        : `${cards[index].name.split(' ', 1)} XXXX`;
+      holderName.innerHTML = decrypt ? cards[index].name : 'XXXX XXXX';
       expiryDate.innerHTML = decrypt ? cards[index].expiry : 'XX/XX';
       cvv.innerHTML = decrypt ? cards[index].cvv : 'XXX';
     }
@@ -84,30 +82,15 @@ export const DebitCard = () => {
         <div>
           <Title>Cards List</Title>
           <CardList data-testid="debit-card-list">
-            <CardButton
-              data-testid="list-card-1"
-              onClick={() => handleCardButtonClick(0)}
-            >
-              <CardButtonText>Card 1</CardButtonText>
-            </CardButton>
-            <CardButton
-              data-testid="list-card-2"
-              onClick={() => handleCardButtonClick(1)}
-            >
-              <CardButtonText>Card 2</CardButtonText>
-            </CardButton>
-            <CardButton
-              data-testid="list-card-3"
-              onClick={() => handleCardButtonClick(2)}
-            >
-              <CardButtonText>Card 3</CardButtonText>
-            </CardButton>
-            <CardButton
-              data-testid="list-card-4"
-              onClick={() => handleCardButtonClick(3)}
-            >
-              <CardButtonText>Card 4</CardButtonText>
-            </CardButton>
+            {cards.map((_, index) => (
+              <CardButton
+                data-testid={`list-card-${index}`}
+                onClick={() => handleCardButtonClick(index)}
+                key={index}
+              >
+                <CardButtonText>{`Card ${index + 1}`}</CardButtonText>
+              </CardButton>
+            ))}
           </CardList>
         </div>
       </div>
